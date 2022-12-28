@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
@@ -22,7 +23,7 @@ const AddTask = () => {
         const url = `https://api.imgbb.com/1/upload?&key=${imgHostKey}`
 
         if(!user){
-            return alert('please login first')
+            return toast.error('Please login first')
         }
 
         fetch(url,{
@@ -54,11 +55,12 @@ const AddTask = () => {
                 .then(res => res.json())
                 .then(result => {
                     console.log(result)
+                    toast.success('Task added')
                     navigate('/mytask')
                 })
             }
         })
-        console.log(task, details, date, image);
+        // console.log(task, details, date, image);
     }
 
   return (
