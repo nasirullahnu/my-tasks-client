@@ -1,11 +1,27 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const {logIn} = useContext(AuthContext)
+    const {logIn, googleLogin} = useContext(AuthContext)
+    const googleProvider = new GoogleAuthProvider()
     const navigate = useNavigate();
 
+
+    // google login
+    const handleGoogleLogin = () => {
+        googleLogin(googleProvider)
+          .then((res) => res.json())
+          .then((result) => {
+            const user = result.user;
+            console.log(user);
+            navigate('/')
+          })
+          .catch((error) => console.error(error));
+      };
+
+    //   login with email and password
     const handleEmailLogin = event => {
         event.preventDefault()
         const form = event.target;
@@ -43,7 +59,7 @@ const Login = () => {
 <p>Don't have an account? 
     <Link to='/signup' className='text-yellow-500 font-semibold'>Signup</Link>
 </p><hr></hr>
-<button type="button" class="mt-5 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">Login With Google</button>
+<button onClick={handleGoogleLogin} type="button" class="mt-5 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">Login With Google</button>
 
 </div>
 
