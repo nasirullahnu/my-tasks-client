@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Signup = () => {
-    const {createUser, googleLogin} = useContext(AuthContext)
+    const {createUser, googleLogin, updateUser} = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider()
     const navigate = useNavigate();
 
@@ -29,11 +29,17 @@ const Signup = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password);
+        // console.log(name, email, password);
         createUser(email, password)
     .then(result => {
         const user = result.user
         console.log(user)
+        const userInfo ={
+            displayName : name
+        }
+        updateUser(userInfo)
+        .then(()=>{})
+        .catch(err => console.error(err));
         form.reset();
         navigate('/')
     })
