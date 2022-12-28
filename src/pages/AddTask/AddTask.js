@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const AddTask = () => {
@@ -7,6 +8,7 @@ const AddTask = () => {
     // console.log(imgHostKey)
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    const navigate = useNavigate()
 
     const addTask = event => {
         event.preventDefault()
@@ -22,7 +24,7 @@ const AddTask = () => {
         if(!user){
             return alert('please login first')
         }
-        
+
         fetch(url,{
             method : 'POST',
             body: formData
@@ -37,9 +39,23 @@ const AddTask = () => {
                     taskImage : imgData.data.url,
                     taskDate : actionDate,
                     userEmail : user.email,
+                    userName : user.displayName,
                     taskAdded : date
                 }
                 console.log(myTask)
+                // add my all task to database 
+                fetch('http://localhost:5000/allTask', {
+                    method : 'POST',
+                    headers : {
+                        'content-type' : 'application/json',
+                    },
+                    body : JSON.stringify(myTask)
+                })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result)
+                    navigate('/mytask')
+                })
             }
         })
         console.log(task, details, date, image);
