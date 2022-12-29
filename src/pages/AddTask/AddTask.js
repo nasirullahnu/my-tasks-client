@@ -45,7 +45,7 @@ const AddTask = () => {
                 }
                 console.log(myTask)
                 // add my all task to database 
-                fetch('http://localhost:5000/allTask', {
+                fetch('https://my-task-server-theta.vercel.app/allTask', {
                     method : 'POST',
                     headers : {
                         'content-type' : 'application/json',

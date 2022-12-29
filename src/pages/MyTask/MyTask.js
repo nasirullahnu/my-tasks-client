@@ -11,7 +11,7 @@ const MyTask = () => {
     const navigate = useNavigate();
 
 
-    const url = `http://localhost:5000/myTask?email=${user?.email}`
+    const url = `https://my-task-server-theta.vercel.app/myTask?email=${user?.email}`
     const {data: allTask =[], isLoading, refetch} = useQuery({
         queryKey : ['myTask'],
         queryFn: async() => {
@@ -30,7 +30,7 @@ const MyTask = () => {
         console.log(id);
         const proced = window.confirm("Confirm Delete?");
         if (proced) {
-          fetch(`http://localhost:5000/myTask/${id}`, {
+          fetch(`https://my-task-server-theta.vercel.app/myTask/${id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())
@@ -48,7 +48,7 @@ const MyTask = () => {
       // complete task
         const endTask = (id) => {
             console.log(id);
-            fetch(`http://localhost:5000/myTask/${id}`, {
+            fetch(`https://my-task-server-theta.vercel.app/myTask/${id}`, {
             method: "PUT",
             })
             .then((res) => res.json())
@@ -75,7 +75,7 @@ const MyTask = () => {
         <div>
             <h1 className='text-3xl my-4'>Yet to complete</h1>
             <Link to="/completedtask">
-                <button type="button" className="text-white my-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">See completed</button>
+                <button type="button" className="text-white my-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">See ompleted</button>
             </Link>
         <div className='grid gap-6 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mx-5'>
         {  

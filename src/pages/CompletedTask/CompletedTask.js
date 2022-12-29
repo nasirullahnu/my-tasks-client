@@ -8,7 +8,7 @@ import Loading from '../../Shared/Loading/Loading';
 const CompletedTask = () => {
     const {user} = useContext(AuthContext)
 
-    const url = `http://localhost:5000/myTask?email=${user?.email}`
+    const url = `https://my-task-server-theta.vercel.app/myTask?email=${user?.email}`
     const {data: allTask =[], isLoading, refetch} = useQuery({
         queryKey : ['myTask'],
         queryFn: async() => {
@@ -28,7 +28,7 @@ const CompletedTask = () => {
         console.log(id);
         const proced = window.confirm("Confirm Delete?");
         if (proced) {
-          fetch(`http://localhost:5000/myTask/${id}`, {
+          fetch(`https://my-task-server-theta.vercel.app/myTask/${id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())
