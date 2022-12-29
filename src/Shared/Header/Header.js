@@ -16,7 +16,7 @@ const Header = () => {
       <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="test.html" class="flex items-center">
           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-            Flowbite
+            My Task
           </span>
         </a>
         <button
