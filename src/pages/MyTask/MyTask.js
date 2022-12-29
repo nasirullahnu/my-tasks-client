@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ConfirmModal from '../../Shared/ConfirmModal/ConfirmModal';
 
 const MyTask = () => {
     const {user} = useContext(AuthContext)
+    const navigate = useNavigate();
 
 
     const url = `http://localhost:5000/myTask?email=${user?.email}`
@@ -53,6 +55,7 @@ const MyTask = () => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
                 toast.success("Task Completed");
+                navigate('/completedtask')
                 refetch();
                 }
             });
@@ -62,8 +65,9 @@ const MyTask = () => {
 
     return (
         <div>
-            <h2 className='text-2xl my-5'>Task you have to complete</h2>
 
+        <div>
+            <h1 className='text-3xl'>Task for {allTask[0].userName}</h1>
         <div className='grid gap-6 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mx-5'>
         {  
             allTask.map(task => task.status !== "completed" &&  <div key={task._id} class="w-full bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -82,7 +86,6 @@ const MyTask = () => {
                 <div class="flex items-center mt-2.5 mb-5">
                     <p className='text-white'>Added on : </p>
                     <p className='text-white'>{task.taskAdded}</p>
-                    <p className='text-white'>{task.userName}</p>
                 </div>
                 
                 <div class="flex items-center justify-between">
@@ -101,6 +104,7 @@ const MyTask = () => {
             </div>
         </div>  )
         }
+        </div>
         </div>
         </div>
     );
