@@ -75,7 +75,7 @@ const MyTask = () => {
         <div>
             <h1 className='text-3xl my-4'>Yet to complete</h1>
             <Link to="/completedtask">
-                <button type="button" className="text-white my-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">See ompleted</button>
+                <button type="button" className="text-white my-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">See Completed</button>
             </Link>
         <div className='grid gap-6 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mx-5'>
         {  
@@ -84,17 +84,17 @@ const MyTask = () => {
                 <img alt="task" className="p-8 rounded-t-lg" src={task.taskImage} />
             </a>
             <div className="px-5 pb-5">
-                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{task.taskName}</h5>
+                    <h5 className="text-xl text-yellow-600 font-semibold tracking-tight dark:text-white">{task.taskName}</h5>
                 <div className="flex items-center mt-2.5 mb-5">
-                    <p className='text-white'>{task.taskDetails}</p>
+                    <p className='text-black'>{task.taskDetails}</p>
                 </div>
                 <div className="flex items-center mt-2.5 mb-5">
-                    <p className='text-white'>Action Date : </p>
-                    <p className='text-yellow-400'>{task.taskDate}</p>
+                    <p className='text-black'>Action Date : </p>
+                    <p className='text-blue-600'>{task.taskDate}</p>
                 </div>
                 <div className="flex items-center mt-2.5 mb-5">
-                    <p className='text-white'>Added on : </p>
-                    <p className='text-white'>{task.taskAdded}</p>
+                    <p className='text-black'>Added on : </p>
+                    <p className='text-blue-600'>{task.taskAdded}</p>
                 </div>
                 
                 <div className="flex items-center justify-between">

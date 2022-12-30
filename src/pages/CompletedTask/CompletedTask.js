@@ -62,15 +62,15 @@ const CompletedTask = () => {
                     <div className="px-5 pb-5">
                             <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{task.taskName}</h5>
                         <div className="flex items-center mt-2.5 mb-5">
-                            <p className='text-white'>{task.taskDetails}</p>
+                            <p className='text-black'>{task.taskDetails}</p>
                         </div>
                         <div className="flex items-center mt-2.5 mb-5">
-                            <p className='text-white'>Action Date : </p>
-                            <p className='text-yellow-400'>{task.taskDate}</p>
+                            <p className='text-black'>Action Date : </p>
+                            <p className='text-blue-600'>{task.taskDate}</p>
                         </div>
                         <div className="flex items-center mt-2.5 mb-5">
-                            <p className='text-white'>Added on : </p>
-                            <p className='text-white'>{task.taskAdded}</p>
+                            <p className='text-black'>Added on : </p>
+                            <p className='text-blue-600'>{task.taskAdded}</p>
                         </div>
                         
                         <div className="flex items-center justify-between">
